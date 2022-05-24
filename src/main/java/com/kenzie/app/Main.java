@@ -8,68 +8,43 @@ public class Main {
 
         String longestWord;
         String[] wordArray;
-
         // code help from
         // https://www.delftstack.com/howto/java/how-to-remove-punctuation-from-string-in-java/#:~:text=Remove%20Punctuation%20From%20String%20Using,means%20all%20the%20punctuation%20symbols.
-        //wordArray = inputString.replaceAll("\\p{Punct}", "").split(" ");
-        wordArray =  inputString.replaceAll("[.,!?]", "").split(" ");
-        //[^-]
-        //wordArray.replaceAll("\\p{Punt}", "");
-        longestWord = wordArray[0];
+        wordArray = inputString.trim().replaceAll("[.,!?\"]", "").split(" ");
+        longestWord = "";
         for (int i = 0; i < wordArray.length; i++) {
             if (wordArray[i].length() > longestWord.length()) {
                 longestWord = wordArray[i];
             }
         }
-
         return longestWord;
     }
 
     public static String findShortestWord(String inputString) {
 
         //https://stackoverflow.com/questions/25829866/finding-the-shortest-word-in-an-array-of-strings-java
-        String[] wordArray = new String[0];
-
-        // code help from
-        // https://www.delftstack.com/howto/java/how-to-remove-punctuation-from-string-in-java/#:~:text=Remove%20Punctuation%20From%20String%20Using,means%20all%20the%20punctuation%20symbols.
-        wordArray = inputString.replaceAll("\\p{Punct}", "").split(" ");
-        //wordArray =  inputString.replaceAll(".*[.,!?].*", "").split(" ");
-
-//        int index = 0;
-//        int minLength = wordArray[0].length();
-//        for (int i = 0; i < wordArray.length; i++) {
-//
-//            //From Nathan during study Hall
-//            //if ((wordArray.length) == 1 && wordArray[0].equals("")){
-//            //return 0;
-//
-//            if (wordArray[i].length() < minLength)
-//                index = i;
-//            minLength = wordArray[i].length();
-//        }
-        String shortestWord;
-        shortestWord = wordArray[0];
+        String[] wordArray;
+        // code help from: https://www.delftstack.com/howto/java/how-to-remove-punctuation-from-string-in-java/#:~:text=Remove%20Punctuation%20From%20String%20Using,means%20all%20the%20punctuation%20symbols.
+        // code help from: https://regexone.com/
+        wordArray = inputString.trim().replaceAll("[.,!?\"]", "").split(" ");
+        String shortestWord = wordArray[0];
 
         for (int i = 0; i < wordArray.length; i++) {
             if (wordArray[i].length() < shortestWord.length()) {
                 shortestWord = wordArray[i];
-                if (wordArray.length == 1 && wordArray[0].equals(""));
+                if (wordArray.length == 1 && wordArray[0].equals("")) ;
+                shortestWord = shortestWord;
                 break;
             }
-//            if ((wordArray.length) == 1 && wordArray[0].equals("")) {
-//                return "";
-            }
-
-
-            //return wordArray[index];
-            return shortestWord;
         }
+        return shortestWord;
+    }
 
 
     public static int findNumberOfWords(String inputString) {
         int count = 0;
         String[] wordArray = new String[0];
-        wordArray = inputString.replaceAll("[,.?!]", "").split(" ");
+        wordArray = inputString.replaceAll("[,.?!\"]", "").split(" ");
 
         for (int i = 0; i < wordArray.length; i++) {
             if (wordArray[i].isEmpty()) {
@@ -82,26 +57,6 @@ public class Main {
 
 
     public static int findNumberOfCommas(String inputString) {
-
-//        int count = 0;
-//        String[] wordArray;
-//        // wordArray = inputString.split(" ");
-//        // help from https://regexone.com/
-//        wordArray = inputString.replaceAll("[a-z A-Z!?.\\d]", "").split(" ");
-//
-//
-//        for (int i = 0; i < wordArray.length; i++) {
-//            for (int j = 0; j < wordArray[i].length(); j++) {
-//
-//            }
-//            if (wordArray[i].contains(",")) {
-//                count++;
-//            }
-//
-//        }
-//        return count;
-//
-//    }
 
         String[] wordArray;
         wordArray = inputString.split(" ");
@@ -123,21 +78,6 @@ public class Main {
         String[] wordArray;
 
         wordArray = inputString.split(" ");
-        // help from https://regexone.com/
-        // wordArray =
-        //inputString.replaceAll("[b-z B-Z!?.\\d]", "").split(" ");
-        //inputString.codePointCount(0, inputString.length());
-//        char[] charArray = '';
-//        inputString.getChars(0, inputString.length(), charArray);
-        //inputString.codePointBefore(0, inputString.length());
-
-
-//        for (int i = 0; i < inputString.length(); i++) {
-//
-//        }
-//         if (inputString.matches("[a++]"));
-//         count++;
-
 
         //code help from
         //https://stackoverflow.com/questions/40653442/how-to-count-the-number-of-letters-in-an-array-java#:~:text=Just%20iterate%20over%20strings%20and,%7B%20char%5B%5D%20ch%20%3D%20str.
@@ -151,23 +91,6 @@ public class Main {
                 }
             }
         }
-
-//            String letters = new String(wordArray[count]);
-//        }
-//
-
-
-            //char[] eachLetterAInArray = wordArray[i].toCharArray();
-
-//            //if (wordArray[i].contains("a")) {
-//            for (int j = 0; j < eachLetterAInArray.length; j++) {
-//                if (eachLetterAInArray[j] == 'a' | eachLetterAInArray[j] 'A'){
-//                    // if (wordArray[j].matches("[a+]")) {
-//                    count++;
-//                }
-//
-//            }
-//        }
         return count;
     }
 
@@ -196,7 +119,6 @@ public class Main {
 
         int count = 0;
         String[] wordArray;
-
         wordArray = inputString.split(" ");
         //code help from
         //https://stackoverflow.com/questions/40653442/how-to-count-the-number-of-letters-in-an-array-java#:~:text=Just%20iterate%20over%20strings%20and,%7B%20char%5B%5D%20ch%20%3D%20str.
@@ -255,35 +177,9 @@ public class Main {
         return count;
     }
 
-//            if (wordArray[i].equals('a'){
-//                count++;
-
-
-//        if(letter.equals("a")) {
-//            letterVariableCountA++;
-//        }
-
-//
-
-
-
-
-
-
 
     public static int findNumberOfExclamationPoints(String inputString) {
-//        int count = 0;
-//        String[] wordArray;
-//        wordArray = inputString.split(" ");
-//
-//        for (int i = 0; i < wordArray.length; i++) {
-//            if (wordArray[i].contains("!")) {
-//                count++;
-//            }
-//
-//        }
-//        return count;
-//    }
+
         String[] wordArray;
         wordArray = inputString.split(" ");
         int count = 0;
@@ -300,15 +196,7 @@ public class Main {
     }
 
     public static int findNumberOfQuestionMarks(String inputString) {
-//        int count = 0;
-//        String[] wordArray;
-//        wordArray = inputString.split(" ");
-//
-//        for (int i = 0; i < wordArray.length; i++) {
-//            if (wordArray[i].contains("?"))
-//                count++;
-//        }
-//        return count;
+
         String[] wordArray;
         wordArray = inputString.split(" ");
         int count = 0;
@@ -343,58 +231,15 @@ public class Main {
 
     public static int findNumberOfCharacters(String inputString) {
 
-//        int total = 0;
-//        int count = 0;
-//        String[] wordArray;
-//        wordArray = inputString.split(" ");
-//
-//        for (int i = 0; i < wordArray.length; i++) {
-//            if (wordArray[i].isEmpty()) {
-//
-//            } else
-//                count = wordArray[i].length();
-//                total = total + count;
-//
-//
-//        }
-        //from helping another student during class
         return inputString.length();
     }
 
-
-
-    // In this assessment, you will be evaluated on how well you organize your code into methods
-    // as well as how well you develop methods in order to achieve the requirements. 
-    
-    //Suggested Methods: 
-    // Create a countCharacter() method
-    // to count how many times a specific character appears in a string
-    // Characters can be letters or punctuation
-    // Hint: This can be done by taking in the character as a char or as a String
-    // - vowels, punctuation
-    //Hint: return an int
-
-
-    //Create a method that counts the number of characters in a string
-
-    //Create a method to count the number of words in a string
-
-    //Create a method to find the longest word in a string
-
-    //Create a method to find the shortest word in a string
-
-
-
-
     public static void main(String[] args) {
-
-        //String inputString = "Hello! Welcome to Kenzie.  My name is Robert, and I'm here with my friend Waldo.  Have you met waldo?";
-        //String inputString = "Hello! there now now test..,, A aa aa a ?!  ???";
 
         //Declare variables
         String inputString = "";
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please input a sentence");
+        System.out.println("Please enter text to analyze: ");
         inputString = scanner.nextLine();
 
         int totalA = findNumberOfLetterA(inputString);
@@ -416,22 +261,12 @@ public class Main {
         String[] inputStringArray = inputString.split(" ");
 
 
-//
-        //
-
-        //find shortest word variables
-
-        //shortestWord = longestWord;
-
-        //find shortest word loop
 
 
-        //Call your methods here in main()   
 
 
         //Print out your findings to the console here
         System.out.println("****Text Analyzer Program***");
-
 
         System.out.println("Total [a]: " + totalA);
         System.out.println("Total [e]: " + totalE);
@@ -442,18 +277,10 @@ public class Main {
         System.out.println("Total commas: " + totalComma);
         System.out.println("Total exclamation points: " + totalExclamation);
         System.out.println("Total question marks: " + totalQuestionMark);
-        //System.out.println("Total punctuation: " + totp);
         System.out.println("Total characters: " + numCharacters);
         System.out.println("Total words: " + numWords);
         System.out.println("The longest word: " + longestWord);
         System.out.println("The shortest word: " + shortestWord);
-
-
-
-
-
-
-
 
     }
 }
